@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { TiLocation } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
@@ -65,6 +65,14 @@ const Hero = () => {
         scrub: true,
       },
     });
+  }, []);
+
+  useEffect(() => {
+    for (let i = 1; i <= totalVideos; i++) {
+      const video = document.createElement("video");
+      video.src = getVideoSource(i);
+      video.onloadeddata = handleVideoLoad;
+    }
   }, []);
 
   const getVideoSource = (index) => `videos/hero-${index}.mp4`;

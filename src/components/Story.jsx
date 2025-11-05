@@ -1,98 +1,49 @@
-import React, { useRef } from "react";
-import AnimatedTitleWithSpaces from "./AnimatedTitle";
-import gsap from "gsap";
-import RoundedCorners from "./Roundedcorners";
-import Button from "./Button";
+import React from "react";
+import AnimatedTitle from "./AnimatedTitle";
+import { Power4 } from "gsap/all";
 
 const Story = () => {
-  const frameRef = useRef(null);
-
-  const handleMouseLeave = () => {
-    const element = frameRef.current;
-
-    if (!element) return;
-
-    gsap.to(element, {
-      duration: 0.3,
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1.05,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const element = frameRef.current;
-
-    if (!element) return;
-
-    const rect = element.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * 10;
-    const rotateY = ((x - centerX) / centerX) * -10;
-
-    gsap.to(element, {
-      duration: 0.3,
-      rotateX: rotateX,
-      rotateY: rotateY,
-      scale: 1.05,
-      ease: "power2.out",
-      transformPerspective: 500,
-    });
-  };
-
   return (
-    <section id="story" className="min-h-dvh w-screen bg-black text-blue-50">
-      <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="text-sm uppercase md:text-[10px]">Multiverse of gaming</p>
-
-        <div className="relative size-full">
-          <AnimatedTitleWithSpaces
-            title={"The Genesis of Nexia"}
-            sectionId="#story"
-            containerClass={
-              "mt-5 pointer-events-none mix-blend-difference relative z-10"
-            }
-          />
-
-          <div className="relative md:h-dvh h-[90vh] w-full">
-            <div className="absolute left-0 top-0 size-full overflow-hidden md:left-[20%] md:top-[-10%] md:size-4/5">
-              <div className="absolute w-full md:h-dvh h-[50dvh] opacity-100 left-10 top-16 md:left-0 md:top-10 lg:left-[-300px] lg:top-[-100px]">
-                <img
-                  src="/img/entrance.png"
-                  alt="Entrance"
-                  className="object-contain"
-                  ref={frameRef}
-                  onMouseLeave={handleMouseLeave}
-                  onMouseUp={handleMouseLeave}
-                  onMouseEnter={handleMouseLeave}
-                  onMouseMove={handleMouseMove}
-                />
-              </div>
-            </div>
-
-            <RoundedCorners />
-          </div>
-        </div>
-
-        <div className="mt-10 mb-10 flex w-full justify-center">
-          <div className="flex h-full w-fit flex-col items-center">
-            <p className="mt-3 max-w-small text-center text-violet-50">
-              Every legend has a beginning. This is ours. Discover the journey
-              that sparked a new, connected reality for gamers.
-            </p>
-
-            <Button
-              id={"realm-button"}
-              title={"Join The Community"}
-              className="mt-10"
+    <section
+      id="story"
+      className="relative w-full min-h-dvh text-white bg-black"
+    >
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+        <video
+          className="w-full h-full object-cover"
+          src="/videos/feature-5.mp4"
+          autoPlay
+          loop
+          muted
+        ></video>
+      </div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/80"></div>
+      <div className="relative z-10 flex flex-col items-center justify-center h-full py-20">
+        <div className="w-full max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-7xl font-bold mb-6">
+            <AnimatedTitle
+              title={"Forge Your Legacy"}
+              animationProps={{
+                rotationX: 90,
+                opacity: 0,
+                duration: 1.5,
+                ease: Power4.easeOut,
+                stagger: 0.1,
+              }}
             />
+          </h2>
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            In the sprawling universe of online gaming, a new legend is born.
+            This is not just a game; it's a universe crafted from dreams and
+            nightmares, where every choice carves your path to glory or ruin.
+          </p>
+          <div className="mt-12">
+            <a
+              href="#contact"
+              className="px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            >
+              Join the Vanguard
+            </a>
           </div>
         </div>
       </div>

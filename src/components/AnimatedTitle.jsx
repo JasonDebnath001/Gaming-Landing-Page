@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AnimatedTitleWithSpaces = ({ title, containerClass }) => {
+const AnimatedTitle = ({ title, containerClass, animationProps }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -12,22 +12,19 @@ const AnimatedTitleWithSpaces = ({ title, containerClass }) => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "100 bottom",
-          end: "center bottom",
+          start: "top 80%",
+          end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
       });
 
-      titleAnimation.to(".animated-word", {
-        opacity: 1,
-        transform: "translate3d(0px, 0px, 0px) rotateY(0deg) rotateX(0deg)",
-        ease: "power2.inOut",
-        stagger: 0.02,
+      titleAnimation.from(".animated-word", {
+        ...animationProps,
       });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [animationProps]);
 
   return (
     <div
@@ -40,7 +37,7 @@ const AnimatedTitleWithSpaces = ({ title, containerClass }) => {
           className="flex justify-center items-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
         >
           {line.split(" ").map((word, index) => (
-            <span key={index} className="animated-word opacity-0">
+            <span key={index} className="animated-word">
               {word}
             </span>
           ))}
@@ -50,4 +47,4 @@ const AnimatedTitleWithSpaces = ({ title, containerClass }) => {
   );
 };
 
-export default AnimatedTitleWithSpaces;
+export default AnimatedTitle;

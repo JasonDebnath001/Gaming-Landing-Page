@@ -30,7 +30,7 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <h2 className="text-sm uppercase md:text-[10px]">Welcome to Nexia</h2>
-        <AnimatedTitleWithSpaces title="Engineering the future <br /> of animated play" containerClass={'mt-5 !text-black text-center'} />
+        <AnimatedTitleWithSpaces title="Engineering the future <br /> of animated play" containerClass={'mt-5 text-[30px] !text-black text-center'} />
         <div className="absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-136">
           <p>Welcome to Nexia</p>
           <p>The future of play begins now</p>

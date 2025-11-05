@@ -81,7 +81,7 @@ const Features = () => {
           </div>
 
           <div className="grid h-[135vh] grid-cols-2 grid-rows-3 gap-7">
-            <div className="relative border-hsla col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 md:col-span-1 md:row-span-2">
+            <div className="relative border-white/20 col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 md:col-span-1 md:row-span-2">
               <Bentocard
                 src={"videos/feature-2.mp4"}
                 title={<>Chroma Mint</>}
@@ -91,7 +91,7 @@ const Features = () => {
               />
             </div>
 
-            <div className="relative border-hsla col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 ms-32 md:col-span-1 md:ms-0">
+            <div className="relative border-white/20 col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 ms-32 md:col-span-1 md:ms-0">
               <Bentocard
                 src={"videos/feature-3.mp4"}
                 title={<>The Social Core</>}
